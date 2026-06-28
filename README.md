@@ -20,11 +20,14 @@ fees on Soroban.
 ## Demo
 
 <div align="center">
-  <video src="https://github.com/cansarihan/streampay/raw/main/docs/demo.mp4" controls muted width="720"></video>
+
+[![Watch the StreamPay demo](docs/screenshots/demo-thumb.png)](https://github.com/cansarihan/streampay/blob/main/docs/demo.mp4)
+
+▶︎ **[Watch the walkthrough](https://github.com/cansarihan/streampay/blob/main/docs/demo.mp4)** — create a stream → live per-second vesting → withdraw → cancel → analytics
+
 </div>
 
-A walkthrough — create a stream, watch it vest per-second, withdraw, cancel, and the live analytics.
-If the player doesn't load, [open the video directly](https://github.com/cansarihan/streampay/raw/main/docs/demo.mp4). **Live app:** <https://cansarihan.github.io/streampay/>
+**Live app:** <https://cansarihan.github.io/streampay/>
 
 ## Why streaming, why Stellar
 
