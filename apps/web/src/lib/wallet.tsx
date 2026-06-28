@@ -1,11 +1,6 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
-import {
-  StellarWalletsKit,
-  WalletNetwork,
-  allowAllModules,
-  FREIGHTER_ID,
-} from '@creit.tech/stellar-wallets-kit';
+import type { StellarWalletsKit, WalletNetwork } from '@creit.tech/stellar-wallets-kit';
 import type { WalletSigner } from '@streampay/sdk';
 import { NETWORK, NETWORK_PASSPHRASE } from './config';
 import { setAnalyticsWallet, track } from './analytics';
@@ -21,40 +16,58 @@ interface WalletContextValue {
 const WalletContext = createContext<WalletContextValue | null>(null);
 const STORAGE_KEY = 'streampay:wallet';
 
+// The wallets kit is ~1 MB (it bundles many wallet integrations), so it is dynamically imported and
+// instantiated only the first time it is actually needed — never on the landing/initial load.
+let kitPromise: Promise<StellarWalletsKit> | null = null;
+function getKit(): Promise<StellarWalletsKit> {
+  if (!kitPromise) {
+    kitPromise = import('@creit.tech/stellar-wallets-kit').then(
+      (m) =>
+        new m.StellarWalletsKit({
+          network: NETWORK === 'public' ? m.WalletNetwork.PUBLIC : m.WalletNetwork.TESTNET,
+          selectedWalletId: m.FREIGHTER_ID,
+          modules: [
+            new m.FreighterModule(),
+            new m.xBullModule(),
+            new m.AlbedoModule(),
+            new m.LobstrModule(),
+            new m.RabetModule(),
+            new m.HanaModule(),
+            new m.HotWalletModule(),
+          ],
+        })
+    );
+  }
+  return kitPromise;
+}
+
 export function WalletProvider({ children }: { children: ReactNode }) {
-  const kitRef = useRef<StellarWalletsKit | null>(null);
   const [address, setAddress] = useState<string | null>(null);
   const [connecting, setConnecting] = useState(false);
-
-  if (!kitRef.current) {
-    kitRef.current = new StellarWalletsKit({
-      network: NETWORK === 'public' ? WalletNetwork.PUBLIC : WalletNetwork.TESTNET,
-      selectedWalletId: FREIGHTER_ID,
-      modules: allowAllModules(),
-    });
-  }
 
   useEffect(() => {
     setAnalyticsWallet(address);
   }, [address]);
 
-  // Restore a previous session.
+  // Restore a previous session (only loads the kit if there is one to restore).
   useEffect(() => {
     const savedId = localStorage.getItem(STORAGE_KEY);
-    const kit = kitRef.current;
-    if (!savedId || !kit) return;
-    kit.setWallet(savedId);
-    kit
-      .getAddress()
-      .then(({ address: restored }) => setAddress(restored))
-      .catch(() => localStorage.removeItem(STORAGE_KEY));
+    if (!savedId) return;
+    void getKit().then(async (kit) => {
+      kit.setWallet(savedId);
+      try {
+        const { address: restored } = await kit.getAddress();
+        setAddress(restored);
+      } catch {
+        localStorage.removeItem(STORAGE_KEY);
+      }
+    });
   }, []);
 
   const connect = useCallback(async () => {
-    const kit = kitRef.current;
-    if (!kit) return;
     setConnecting(true);
     try {
+      const kit = await getKit();
       await kit.openModal({
         onWalletSelected: async (option) => {
           kit.setWallet(option.id);
@@ -73,15 +86,15 @@ export function WalletProvider({ children }: { children: ReactNode }) {
     localStorage.removeItem(STORAGE_KEY);
     setAddress(null);
     track('wallet_disconnected');
-    void kitRef.current?.disconnect().catch(() => undefined);
+    void getKit().then((kit) => kit.disconnect().catch(() => undefined));
   }, []);
 
   const signer = useMemo<WalletSigner | null>(() => {
-    const kit = kitRef.current;
-    if (!address || !kit) return null;
+    if (!address) return null;
     return {
       publicKey: address,
       signTransaction: async (xdr, opts) => {
+        const kit = await getKit();
         const { signedTxXdr } = await kit.signTransaction(xdr, {
           address,
           networkPassphrase: (opts?.networkPassphrase ?? NETWORK_PASSPHRASE) as WalletNetwork,
