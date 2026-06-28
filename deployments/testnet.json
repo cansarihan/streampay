@@ -16,5 +16,7 @@
     }
   },
   "explorer": "https://stellar.expert/explorer/testnet/contract/CCFKV5HTRL33DCWURXES7IX6JR2MWSFW4LSC7UVTWONUPOGANAPETLHT",
+  "webUrl": "https://cansarihan.github.io/streampay/",
+  "apiUrl": "https://streampay-api-jpfi.onrender.com",
   "deployedAt": "2026-06-28"
 }

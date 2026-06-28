@@ -147,6 +147,8 @@ Full instructions and environment variables: [`docs/DEPLOYMENT.md`](docs/DEPLOYM
 | **Network** | Test SDF Network ; September 2015 |
 | **RPC** | `https://soroban-testnet.stellar.org` |
 | **Streamable asset** | Native XLM (SAC `CDLZFC3S…CYSC`) — frictionless, every testnet account is funded |
+| **Live web** | https://cansarihan.github.io/streampay/ (GitHub Pages) |
+| **Live API** | https://streampay-api-jpfi.onrender.com (Render) |
 
 Machine-readable addresses: [`deployments/testnet.json`](deployments/testnet.json).
 
@@ -158,10 +160,10 @@ public** — no need to trust the app:
 - **On-chain (authoritative):** the contract's full transaction history is on
   [stellar.expert](https://stellar.expert/explorer/testnet/contract/CCFKV5HTRL33DCWURXES7IX6JR2MWSFW4LSC7UVTWONUPOGANAPETLHT)
   — every account that created or withdrew a stream appears there, with timestamps and amounts.
-- **In the app:** the **Streams** page reads each user's streams straight from the contract; the
-  **Analytics** page shows protocol-wide stats, a live activity feed (each row links to its tx) and
-  the feedback summary. *(The Analytics page and feedback storage need the API deployed — see
-  [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md); the on-chain proof above is independent of it.)*
+- **In the app (live):** the **Streams** page reads each user's streams straight from the contract;
+  the **Analytics** page shows protocol-wide stats, a live activity feed (each row links to its tx)
+  and the feedback summary — powered by the deployed API at
+  [`streampay-api-jpfi.onrender.com`](https://streampay-api-jpfi.onrender.com/api/stats).
 - **Contract views:** anyone can call `total_streams()` and `get_streams_by_sender/recipient(addr)`.
 
 ## Observability
