@@ -24,6 +24,7 @@
     "contract:test": "cd contracts && cargo test"
   },
   "devDependencies": {
-    "concurrently": "^9.1.0"
+    "concurrently": "^9.1.0",
+    "playwright": "^1.61.1"
   }
 }
