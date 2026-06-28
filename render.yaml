@@ -9,8 +9,8 @@ services:
     envVars:
       - key: CORS_ORIGIN
         value: "*"
-      # Set these two in the Render dashboard (persistent Turso/libSQL database):
+      # Persistent Turso/libSQL database (testnet demo — rotate the token after review).
       - key: TURSO_DATABASE_URL
-        sync: false
+        value: "libsql://streampay-cansarihan.aws-ap-northeast-1.turso.io"
       - key: TURSO_AUTH_TOKEN
-        sync: false
+        value: "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJleHAiOjE3OTA0NDM4NTIsImlhdCI6MTc4MjY2Nzg1MiwiaWQiOiIwMTlmMGY0OC02NTAxLTdkZjctOTdhMy0wYzllM2IzZDBkZTkiLCJyaWQiOiJiZDFlN2FkZC04YmViLTRlYTktYTk2OC0yYWMyOWNhMjEwM2QifQ.4r-0RBgG09aYcbAdC-hP9O8eRrIfLdMXHe52OSnxHGU3maTLFAIKyor2_JNA4cXi4uMw6PLZTon9664PQZX_Cw"
