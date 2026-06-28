@@ -26,7 +26,7 @@ export function WalletButton() {
       {open && (
         <>
           <div className="fixed inset-0 z-20" onClick={() => setOpen(false)} />
-          <div className="glass-strong absolute right-0 z-30 mt-2 w-48 p-1.5">
+          <div className="glass absolute right-0 z-30 mt-2 w-44 p-1">
             <button
               onClick={() => {
                 disconnect();

@@ -93,7 +93,7 @@ function RequestsBody() {
         </Button>
       </Card>
 
-      <div className="space-y-3">
+      <div className="min-w-0 space-y-3">
         <CardLabel>Your requests</CardLabel>
         {saved.length === 0 ? (
           <p className="rounded-xl border border-dashed border-white/10 px-4 py-10 text-center text-sm text-fg-subtle">
@@ -101,8 +101,8 @@ function RequestsBody() {
           </p>
         ) : (
           saved.map((req) => (
-            <Card key={req.id} className="flex items-center justify-between gap-4 p-4">
-              <div className="min-w-0">
+            <Card key={req.id} className="flex items-center gap-3 p-4">
+              <div className="min-w-0 flex-1">
                 <p className="font-display text-fg">
                   {req.amount} {req.assetCode}{' '}
                   <span className="text-sm text-fg-subtle">over {formatDuration(req.durationSeconds)}</span>
