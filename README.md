@@ -9,13 +9,22 @@ sums. Funds vest per-second on-chain; the recipient withdraws what has accrued a
 the sender can cancel to reclaim whatever hasn't streamed — non-custodial, ~5s settlement, sub-cent
 fees on Soroban.
 
-[**Live demo**](https://cansarihan.github.io/streampay/) · [**Demo video**](#) · [**Contract on testnet**](https://stellar.expert/explorer/testnet/contract/CCFKV5HTRL33DCWURXES7IX6JR2MWSFW4LSC7UVTWONUPOGANAPETLHT) · Built by **Can Sarıhan**
+[**Live demo**](https://cansarihan.github.io/streampay/) · [**Demo video**](#demo) · [**Contract on testnet**](https://stellar.expert/explorer/testnet/contract/CCFKV5HTRL33DCWURXES7IX6JR2MWSFW4LSC7UVTWONUPOGANAPETLHT) · Built by **Can Sarıhan**
 
 ![StreamPay landing](docs/screenshots/01-landing.png)
 
 </div>
 
 ---
+
+## Demo
+
+<div align="center">
+  <video src="https://github.com/cansarihan/streampay/raw/main/docs/demo.mp4" controls muted width="720"></video>
+</div>
+
+A walkthrough — create a stream, watch it vest per-second, withdraw, cancel, and the live analytics.
+If the player doesn't load, [open the video directly](https://github.com/cansarihan/streampay/raw/main/docs/demo.mp4). **Live app:** <https://cansarihan.github.io/streampay/>
 
 ## Why streaming, why Stellar
 
