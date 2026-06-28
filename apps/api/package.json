@@ -1,0 +1,29 @@
+{
+  "name": "@streampay/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "StreamPay backend — Soroban event indexer, REST API, feedback and analytics.",
+  "author": "Can Sarıhan <sarihancan@icloud.com>",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@stellar/stellar-sdk": "^13.1.0",
+    "@streampay/sdk": "*",
+    "cors": "^2.8.5",
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}

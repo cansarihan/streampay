@@ -1,0 +1,10 @@
+**/node_modules
+**/dist
+**/target
+**/data
+**/.env
+**/.env.*
+**/*.sqlite
+**/*.db
+.git
+apps/web
