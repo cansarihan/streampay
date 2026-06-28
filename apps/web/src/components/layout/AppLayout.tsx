@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Sidebar } from './Sidebar';
 import { Topbar } from './Topbar';
 import { Spinner } from '../ui/Spinner';
+import { FeedbackWidget } from '../feedback/FeedbackWidget';
 
 export function AppLayout() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -49,6 +50,8 @@ export function AppLayout() {
           </Suspense>
         </main>
       </div>
+
+      <FeedbackWidget />
     </div>
   );
 }
