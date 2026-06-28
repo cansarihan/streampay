@@ -61,9 +61,9 @@ Stellar is the right base layer for it:
 **Mobile responsive**
 
 <p align="center">
-  <img src="docs/screenshots/07-mobile.png" width="230" alt="Mobile landing" />
+  <img src="docs/screenshots/mobile-landing.png" width="200" alt="Mobile landing" />
   &nbsp;&nbsp;
-  <img src="docs/screenshots/08-mobile-app.png" width="230" alt="Mobile dashboard" />
+  <img src="docs/screenshots/mobile-app.png" width="200" alt="Mobile dashboard" />
 </p>
 
 ## Architecture
