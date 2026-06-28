@@ -102,7 +102,7 @@ export function Settings() {
             StreamPay — real-time payment streaming on Stellar. Built by Can Sarıhan.
           </p>
           <div className="mt-3 flex flex-wrap gap-3 text-sm">
-            <a href="/docs" className="text-aqua hover:underline">
+            <a href={`${import.meta.env.BASE_URL}docs`} className="text-aqua hover:underline">
               Documentation
             </a>
             <a

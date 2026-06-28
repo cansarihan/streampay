@@ -23,7 +23,7 @@ createRoot(rootElement).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <WalletProvider>
-        <BrowserRouter>
+        <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
           <App />
         </BrowserRouter>
         <Toaster theme="dark" position="top-right" richColors closeButton />

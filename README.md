@@ -9,7 +9,7 @@ sums. Funds vest per-second on-chain; the recipient withdraws what has accrued a
 the sender can cancel to reclaim whatever hasn't streamed — non-custodial, ~5s settlement, sub-cent
 fees on Soroban.
 
-[**Live demo**](#) · [**Demo video**](#) · [**Contract on testnet**](https://stellar.expert/explorer/testnet/contract/CCFKV5HTRL33DCWURXES7IX6JR2MWSFW4LSC7UVTWONUPOGANAPETLHT) · Built by **Can Sarıhan**
+[**Live demo**](https://cansarihan.github.io/streampay/) · [**Demo video**](#) · [**Contract on testnet**](https://stellar.expert/explorer/testnet/contract/CCFKV5HTRL33DCWURXES7IX6JR2MWSFW4LSC7UVTWONUPOGANAPETLHT) · Built by **Can Sarıhan**
 
 ![StreamPay landing](docs/screenshots/01-landing.png)
 
@@ -149,6 +149,20 @@ Full instructions and environment variables: [`docs/DEPLOYMENT.md`](docs/DEPLOYM
 | **Streamable asset** | Native XLM (SAC `CDLZFC3S…CYSC`) — frictionless, every testnet account is funded |
 
 Machine-readable addresses: [`deployments/testnet.json`](deployments/testnet.json).
+
+## Verifying real usage (proof of wallet interactions)
+
+Every stream is a real, signed transaction on Stellar testnet, so the proof is **on-chain and
+public** — no need to trust the app:
+
+- **On-chain (authoritative):** the contract's full transaction history is on
+  [stellar.expert](https://stellar.expert/explorer/testnet/contract/CCFKV5HTRL33DCWURXES7IX6JR2MWSFW4LSC7UVTWONUPOGANAPETLHT)
+  — every account that created or withdrew a stream appears there, with timestamps and amounts.
+- **In the app:** the **Streams** page reads each user's streams straight from the contract; the
+  **Analytics** page shows protocol-wide stats, a live activity feed (each row links to its tx) and
+  the feedback summary. *(The Analytics page and feedback storage need the API deployed — see
+  [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md); the on-chain proof above is independent of it.)*
+- **Contract views:** anyone can call `total_streams()` and `get_streams_by_sender/recipient(addr)`.
 
 ## Observability
 

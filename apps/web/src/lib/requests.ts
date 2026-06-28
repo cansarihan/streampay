@@ -32,7 +32,7 @@ export function decodeRequest(token: string): PaymentRequest | null {
 }
 
 export function requestLink(request: PaymentRequest): string {
-  return `${window.location.origin}/r/${encodeRequest(request)}`;
+  return `${window.location.origin}${import.meta.env.BASE_URL}r/${encodeRequest(request)}`;
 }
 
 export function listRequests(): StoredRequest[] {

@@ -128,7 +128,7 @@ function StreamDetailBody({ stream, streamId }: { stream: Stream; streamId: numb
           <div className="flex items-center gap-2 text-sm text-fg-muted">
             <Share2 className="size-4" />
             Share
-            <CopyButton value={`${window.location.origin}/app/stream/${stream.id}`} />
+            <CopyButton value={`${window.location.origin}${import.meta.env.BASE_URL}app/stream/${stream.id}`} />
           </div>
         </div>
 

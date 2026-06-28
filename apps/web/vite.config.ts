@@ -4,6 +4,8 @@ import tailwindcss from '@tailwindcss/vite';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
 
 export default defineConfig({
+  // '/' for local/Vercel; set VITE_BASE=/streampay/ for the GitHub Pages build.
+  base: process.env.VITE_BASE || '/',
   plugins: [
     react(),
     tailwindcss(),

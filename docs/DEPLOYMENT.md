@@ -45,6 +45,22 @@ Set the environment variables (Project → Settings → Environment Variables):
 | `VITE_POSTHOG_KEY` *(optional)* | PostHog project key |
 | `VITE_SENTRY_DSN` *(optional)* | Sentry DSN |
 
+### GitHub Pages (frontend-only quick deploy)
+
+The live demo is hosted on GitHub Pages. Build with the repo subpath as the base and publish `dist`
+to a `gh-pages` branch — a `.nojekyll` file plus an `index.html` → `404.html` copy give SPA routing
+for deep links:
+
+```bash
+VITE_BASE=/streampay/ npm run build -w @streampay/web
+cp apps/web/dist/index.html apps/web/dist/404.html
+touch apps/web/dist/.nojekyll
+# publish apps/web/dist to the gh-pages branch, then enable Pages (branch: gh-pages, path: /)
+```
+
+The app reads streams directly from the contract, so it is fully functional without the API — only
+the Analytics page and feedback storage need the API deployed.
+
 ## API (Docker / Render / Railway / Fly)
 
 The API is a container (`apps/api/Dockerfile`, build context = repo root). The included `render.yaml`
