@@ -12,6 +12,11 @@ export function track(name: string, props?: Record<string, unknown>): void {
   void api.track(name, currentWallet, props);
 }
 
+export function reportError(error: Error, context?: Record<string, unknown>): void {
+  console.error('[streampay] UI error:', error, context);
+  void api.track('client_error', currentWallet, { message: error.message, ...context });
+}
+
 export function initAnalytics(): void {
   // extended in the observability task (PostHog + Sentry)
 }

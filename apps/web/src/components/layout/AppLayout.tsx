@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Sidebar } from './Sidebar';
 import { Topbar } from './Topbar';
+import { Spinner } from '../ui/Spinner';
 
 export function AppLayout() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -37,7 +38,15 @@ export function AppLayout() {
       <div className="lg:pl-64">
         <Topbar onMenu={() => setMobileOpen(true)} />
         <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
-          <Outlet />
+          <Suspense
+            fallback={
+              <div className="flex justify-center py-24">
+                <Spinner className="size-7" />
+              </div>
+            }
+          >
+            <Outlet />
+          </Suspense>
         </main>
       </div>
     </div>
