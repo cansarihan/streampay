@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: streampay-api
+    runtime: docker
+    dockerfilePath: ./apps/api/Dockerfile
+    dockerContext: .
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: PORT
+        value: "8787"
+      - key: DB_PATH
+        value: /app/data/streampay.db
+      - key: CORS_ORIGIN
+        value: "*"
+    disk:
+      name: streampay-data
+      mountPath: /app/data
+      sizeGB: 1

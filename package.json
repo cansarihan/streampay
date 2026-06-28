@@ -16,6 +16,7 @@
   "scripts": {
     "build": "npm run build --workspaces --if-present",
     "build:sdk": "npm run build -w @streampay/sdk",
+    "dev": "concurrently -n api,web -c cyan,magenta \"npm run dev:api\" \"npm run dev:web\"",
     "dev:web": "npm run dev -w @streampay/web",
     "dev:api": "npm run dev -w @streampay/api",
     "lint": "npm run lint --workspaces --if-present",
