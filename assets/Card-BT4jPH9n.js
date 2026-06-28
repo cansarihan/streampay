@@ -1,0 +1,1 @@
+import{j as r}from"./vendor-Dh9ngdZo.js";import{h as a}from"./index-DTIWXPoV.js";function n({className:s,...t}){return r.jsx("div",{className:a("glass-strong p-5 sm:p-6",s),...t})}function o({className:s,...t}){return r.jsx("p",{className:a("text-[0.7rem] font-medium uppercase tracking-[0.14em] text-fg-subtle",s),...t})}export{n as C,o as a};

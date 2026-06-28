@@ -1,0 +1,1 @@
+import{j as a}from"./vendor-Dh9ngdZo.js";import{u}from"./FlowBar-Cr-j0Uqd.js";import{f as i}from"./format-D1fq8x_w.js";import{h as f}from"./index-DTIWXPoV.js";function j({stream:o,decimals:r,displayDecimals:t=7,live:s=!0,intervalMs:e=60,className:m}){const n=u(o,s,e);return a.jsx("span",{className:f("tnum",m),children:i(n,r,t)})}export{j as F};
