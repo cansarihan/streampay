@@ -9,7 +9,7 @@ Funds vest per-second on-chain; the recipient withdraws what has accrued at any 
 sender can cancel to reclaim whatever hasn't streamed yet — all non-custodial, settled in ~5s on
 Soroban.
 
-[Live demo](#) · [Contract on testnet](#) · [Demo video](#) · Built by **Can Sarıhan**
+[Live demo](#) · [Contract on testnet](https://stellar.expert/explorer/testnet/contract/CCFKV5HTRL33DCWURXES7IX6JR2MWSFW4LSC7UVTWONUPOGANAPETLHT) · [Demo video](#) · Built by **Can Sarıhan**
 
 </div>
 
@@ -83,10 +83,21 @@ Full setup, deployment (Vercel + Docker) and environment variables are documente
 | `streamed_amount(id)` / `withdrawable_amount(id)` | anyone | Read live vesting state |
 | `get_streams_by_sender/recipient(addr)` | anyone | List a user's stream ids |
 
+## Deployment (Stellar testnet)
+
+| | |
+| --- | --- |
+| **Contract ID** | [`CCFKV5HTRL33DCWURXES7IX6JR2MWSFW4LSC7UVTWONUPOGANAPETLHT`](https://stellar.expert/explorer/testnet/contract/CCFKV5HTRL33DCWURXES7IX6JR2MWSFW4LSC7UVTWONUPOGANAPETLHT) |
+| **Network** | Test SDF Network ; September 2015 |
+| **RPC** | `https://soroban-testnet.stellar.org` |
+| **Streamable asset** | Native XLM (SAC `CDLZFC3S…CYSC`) — frictionless, every testnet account is funded |
+
+Machine-readable addresses live in [`deployments/testnet.json`](./deployments/testnet.json).
+
 ## Status
 
-Testnet MVP for **Risein Level 4 (Green Belt)**. Roadmap, deployment addresses and demo links are
-tracked in this README and [`docs/`](./docs) as they go live.
+Testnet MVP for **Risein Level 4 (Green Belt)**. The contract is live and has settled real streaming
+payments on testnet; the dashboard, SDK and indexer are built on top of it.
 
 ## License
 
