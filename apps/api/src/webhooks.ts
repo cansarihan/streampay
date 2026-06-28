@@ -6,7 +6,7 @@ import type { Db } from './db';
  * registered with a secret, an HMAC-SHA256 signature is attached for verification.
  */
 export async function dispatchWebhooks(db: Db, payload: unknown): Promise<void> {
-  const hooks = db.listWebhooks();
+  const hooks = await db.listWebhooks();
   if (hooks.length === 0) return;
 
   const body = JSON.stringify(payload);

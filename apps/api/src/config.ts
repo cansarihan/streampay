@@ -28,7 +28,9 @@ export const config = {
     process.env.NETWORK_PASSPHRASE ?? dep.networkPassphrase ?? 'Test SDF Network ; September 2015',
   network: process.env.NETWORK ?? dep.network ?? 'testnet',
 
-  dbPath: process.env.DB_PATH ?? './data/streampay.db',
+  // Turso (libSQL) in production for persistence; a local file in development.
+  dbUrl: process.env.TURSO_DATABASE_URL ?? process.env.DB_URL ?? 'file:./data/streampay.db',
+  dbAuthToken: process.env.TURSO_AUTH_TOKEN ?? process.env.DB_AUTH_TOKEN,
 
   indexerEnabled: process.env.INDEXER_ENABLED !== 'false',
   indexerIntervalMs: Number(process.env.INDEXER_INTERVAL_MS ?? 5000),

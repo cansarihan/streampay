@@ -4,7 +4,7 @@ import { Db } from './db';
 import { Indexer } from './indexer';
 import { createApp } from './server';
 
-const db = new Db(config.dbPath);
+const db = await Db.create(config.dbUrl, config.dbAuthToken);
 
 const client = new StreamPayClient({
   contractId: config.contractId,

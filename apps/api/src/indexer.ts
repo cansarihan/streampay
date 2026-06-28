@@ -61,7 +61,7 @@ export class Indexer {
       for (let id = 0; id < total; id++) {
         try {
           const stream = await this.client.getStream(id);
-          this.db.upsertStream(stream, null);
+          await this.db.upsertStream(stream, null);
         } catch {
           /* a missing id shouldn't abort the backfill */
         }
@@ -86,7 +86,7 @@ export class Indexer {
     const server = this.client.rpcServer;
     const latest = await server.getLatestLedger();
 
-    const cursorRaw = this.db.getMeta('cursor_ledger');
+    const cursorRaw = await this.db.getMeta('cursor_ledger');
     let startLedger = cursorRaw
       ? Number(cursorRaw)
       : Math.max(1, latest.sequence - this.cfg.indexerLookbackLedgers);
@@ -104,9 +104,9 @@ export class Indexer {
       const streamId = topics.length > 1 ? Number(topics[1]) : null;
       const txHash = ev.txHash ?? null;
 
-      if (txHash && this.db.eventExists(txHash, type)) continue;
+      if (txHash && (await this.db.eventExists(txHash, type))) continue;
 
-      this.db.insertEvent({
+      await this.db.insertEvent({
         type,
         streamId,
         ledger: ev.ledger,
@@ -131,6 +131,6 @@ export class Indexer {
       }
     }
 
-    this.db.setMeta('cursor_ledger', String(res.latestLedger + 1));
+    await this.db.setMeta('cursor_ledger', String(res.latestLedger + 1));
   }
 }
