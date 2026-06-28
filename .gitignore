@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Builds
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# Rust / Soroban
+target/
+contracts/target/
+**/*.rs.bk
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Local data
+*.sqlite
+*.sqlite3
+*.db
+data/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+
+# Test / coverage
+coverage/
+.nyc_output/
+
+# Deploy
+.vercel/
+.netlify/
+
+# Logs
+*.log
+npm-debug.log*

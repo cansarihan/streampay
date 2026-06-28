@@ -1,0 +1,29 @@
+{
+  "name": "streampay",
+  "version": "0.1.0",
+  "private": true,
+  "description": "StreamPay — real-time money streaming on Stellar (Soroban). Pay salaries, grants and vesting by the second.",
+  "author": "Can Sarıhan <sarihancan@icloud.com>",
+  "license": "MIT",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "build:sdk": "npm run build -w @streampay/sdk",
+    "dev:web": "npm run dev -w @streampay/web",
+    "dev:api": "npm run dev -w @streampay/api",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "contract:build": "cd contracts && stellar contract build",
+    "contract:test": "cd contracts && cargo test"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
