@@ -1,0 +1,223 @@
+@import 'tailwindcss';
+
+/* ============================================================================
+   StreamPay — "Liquid Flow" design system
+   Deep ink-navy canvas · flowing aqua→azure→violet gradient · glass surfaces ·
+   tabular mono numerals that tick by the second.
+   ========================================================================== */
+
+@theme {
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  /* Ink backgrounds (deep navy) */
+  --color-ink-950: #05060f;
+  --color-ink-900: #070b1a;
+  --color-ink-850: #0a1024;
+  --color-ink-800: #0e1430;
+  --color-ink-700: #18204a;
+
+  /* Brand gradient stops */
+  --color-aqua: #1fe3d0;
+  --color-aqua-bright: #3ff7e2;
+  --color-azure: #4f8bff;
+  --color-violet: #8b6cff;
+
+  /* Semantic */
+  --color-positive: #2be8b5;
+  --color-cliff: #f6b73c;
+  --color-danger: #ff5c8a;
+
+  /* Foreground */
+  --color-fg: #e8eeff;
+  --color-fg-muted: #93a0c4;
+  --color-fg-subtle: #5c6890;
+
+  --radius-xl: 1.1rem;
+  --radius-2xl: 1.5rem;
+
+  --animate-flow: flow 9s linear infinite;
+  --animate-shimmer: shimmer 2.4s linear infinite;
+  --animate-pulse-glow: pulse-glow 2.6s ease-in-out infinite;
+  --animate-float: float 7s ease-in-out infinite;
+}
+
+@keyframes flow {
+  to {
+    background-position: 200% center;
+  }
+}
+@keyframes shimmer {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(220%);
+  }
+}
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-positive) 55%, transparent);
+  }
+  50% {
+    opacity: 0.85;
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-positive) 0%, transparent);
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    font-family: var(--font-sans);
+    color: var(--color-fg);
+    background-color: var(--color-ink-950);
+    background-image:
+      radial-gradient(60rem 60rem at 12% -8%, color-mix(in srgb, var(--color-aqua) 11%, transparent), transparent 60%),
+      radial-gradient(54rem 54rem at 100% 0%, color-mix(in srgb, var(--color-violet) 13%, transparent), transparent 55%),
+      radial-gradient(50rem 40rem at 50% 120%, color-mix(in srgb, var(--color-azure) 10%, transparent), transparent 60%);
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-aqua) 35%, transparent);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-aqua);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--color-fg-subtle) 40%, transparent);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--color-fg-muted) 50%, transparent);
+    background-clip: content-box;
+  }
+}
+
+@layer components {
+  /* Glass surfaces */
+  .glass {
+    background: color-mix(in srgb, #fff 4%, transparent);
+    border: 1px solid color-mix(in srgb, #fff 9%, transparent);
+    backdrop-filter: blur(14px);
+    border-radius: var(--radius-xl);
+  }
+  .glass-strong {
+    background: linear-gradient(
+      160deg,
+      color-mix(in srgb, #fff 7%, transparent),
+      color-mix(in srgb, #fff 3%, transparent)
+    );
+    border: 1px solid color-mix(in srgb, #fff 11%, transparent);
+    backdrop-filter: blur(18px);
+    border-radius: var(--radius-2xl);
+  }
+
+  /* The signature: flowing gradient text */
+  .flow-text {
+    background: linear-gradient(
+      100deg,
+      var(--color-aqua-bright),
+      var(--color-azure),
+      var(--color-violet),
+      var(--color-aqua-bright)
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: var(--animate-flow);
+  }
+
+  /* The signature: a continuously flowing ribbon / bar */
+  .flow-bar {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(90deg, var(--color-aqua), var(--color-azure), var(--color-violet));
+    background-size: 200% auto;
+    animation: var(--animate-flow);
+  }
+  .flow-bar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 40%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+    animation: var(--animate-shimmer);
+  }
+
+  /* Live indicator dot */
+  .live-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    background: var(--color-positive);
+    animation: var(--animate-pulse-glow);
+  }
+
+  /* Tabular numerals — keeps ticking counters from jittering */
+  .tnum {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+
+  /* Subtle hairline divider */
+  .hairline {
+    border-color: color-mix(in srgb, #fff 8%, transparent);
+  }
+}
+
+/* Respect reduced-motion: keep the UI legible, drop the perpetual motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .flow-text {
+    animation: none;
+  }
+}
