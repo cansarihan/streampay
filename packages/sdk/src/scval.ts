@@ -1,4 +1,4 @@
-import { Address, nativeToScVal } from '@stellar/stellar-sdk';
+import { Address, nativeToScVal, xdr } from '@stellar/stellar-sdk';
 import type { Config, Stream } from './types';
 import { StreamStatus } from './types';
 
@@ -7,7 +7,7 @@ import { StreamStatus } from './types';
 export const toAddress = (value: string) => new Address(value).toScVal();
 export const toU64 = (value: number | bigint) => nativeToScVal(BigInt(value), { type: 'u64' });
 export const toI128 = (value: bigint) => nativeToScVal(value, { type: 'i128' });
-export const toBool = (value: boolean) => nativeToScVal(value, { type: 'bool' });
+export const toBool = (value: boolean) => xdr.ScVal.scvBool(value);
 
 // --- result decoders (the contract returns snake_case structs) ---
 

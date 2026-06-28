@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@creit.tech/stellar-wallets-kit": "^1.7.3",
-    "@stellar/stellar-sdk": "^13.1.0",
+    "@stellar/stellar-sdk": "^16.0.1",
     "@streampay/sdk": "*",
     "@tanstack/react-query": "^5.62.7",
     "clsx": "^2.1.1",

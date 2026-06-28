@@ -14,7 +14,7 @@
     "build": "tsc --noEmit"
   },
   "dependencies": {
-    "@stellar/stellar-sdk": "^13.1.0",
+    "@stellar/stellar-sdk": "^16.0.1",
     "@streampay/sdk": "*",
     "cors": "^2.8.5",
     "express": "^4.21.1"

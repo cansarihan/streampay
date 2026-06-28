@@ -3,6 +3,9 @@ import { AppLayout } from './components/layout/AppLayout';
 import { PagePlaceholder } from './components/ui/PagePlaceholder';
 import { Landing } from './pages/Landing';
 import { Dashboard } from './pages/Dashboard';
+import { CreateStream } from './pages/CreateStream';
+import { StreamDetail } from './pages/StreamDetail';
+import { Streams } from './pages/Streams';
 
 export function App() {
   return (
@@ -11,9 +14,9 @@ export function App() {
 
       <Route path="/app" element={<AppLayout />}>
         <Route index element={<Dashboard />} />
-        <Route path="create" element={<PagePlaceholder title="Create stream" />} />
-        <Route path="streams" element={<PagePlaceholder title="Streams" />} />
-        <Route path="stream/:id" element={<PagePlaceholder title="Stream" />} />
+        <Route path="create" element={<CreateStream />} />
+        <Route path="streams" element={<Streams />} />
+        <Route path="stream/:id" element={<StreamDetail />} />
         <Route path="payroll" element={<PagePlaceholder title="Payroll" />} />
         <Route path="vesting" element={<PagePlaceholder title="Vesting" />} />
         <Route path="requests" element={<PagePlaceholder title="Requests" />} />
