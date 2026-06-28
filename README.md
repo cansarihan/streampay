@@ -54,9 +54,17 @@ Stellar is the right base layer for it:
 | --- | --- |
 | ![Analytics](docs/screenshots/04-analytics.png) | ![Vesting](docs/screenshots/05-vesting.png) |
 
-| In-app feedback | Mobile responsive |
-| --- | --- |
-| ![Feedback](docs/screenshots/06-feedback.png) | <img src="docs/screenshots/07-mobile.png" width="260" alt="Mobile" /> |
+**In-app feedback widget**
+
+![Feedback widget](docs/screenshots/06-feedback.png)
+
+**Mobile responsive**
+
+<p align="center">
+  <img src="docs/screenshots/07-mobile.png" width="230" alt="Mobile landing" />
+  &nbsp;&nbsp;
+  <img src="docs/screenshots/08-mobile-app.png" width="230" alt="Mobile dashboard" />
+</p>
 
 ## Architecture
 
